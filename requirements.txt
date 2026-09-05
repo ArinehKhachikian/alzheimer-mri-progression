@@ -1,0 +1,14 @@
+torch
+torchvision
+torchaudio
+monai
+nibabel
+antspyx
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+wandb
+gradio
+jupyter
