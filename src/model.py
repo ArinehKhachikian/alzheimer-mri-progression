@@ -3,9 +3,9 @@ from monai.networks.nets import DenseNet121, ViT
 
 def get_densenet():
     model = DenseNet121(
-        spatial_dims = 3,              # volumetric (1, 96, 112, 96)
-        in_channels = 1,               # grayscale MRI (1, 96, 112, 96)
-        out_channels = 3               # CN, MCI, Dementia
+        spatial_dims = 3,               # volumetric (1, 96, 112, 96)
+        in_channels = 1,                # grayscale MRI (1, 96, 112, 96)
+        out_channels = 3                # CN, MCI, Dementia
     )
     return model
 
