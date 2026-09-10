@@ -24,16 +24,18 @@ class ADNIDataset(Dataset):
         label = int(row['label'])
         img = nib.load(filepath)
         volume = img.get_fdata(dtype=np.float32)
-        volume = np.expand_dims(volume, axis=0)
+
         # Reorder to standard orientation using nibabel
         import nibabel.orientations as nio                                # import nibabel's orientation tools
         orig_ornt = nio.io_orientation(img.affine)                        # read current orientation from the affine matrix
         targ_ornt = nio.axcodes2ornt('RAS')                               # define target orientation as RAS standard
         transform_ornt = nio.ornt_transform(orig_ornt, targ_ornt)         # calculate what swaps/flips are needed
         volume = nio.apply_orientation(volume, transform_ornt)            # apply the transformation to the numpy array
+
+        volume = np.expand_dims(volume, axis=0)
+
         if self.transform:
             volume = self.transform(volume)
         else:
             volume = torch.FloatTensor(volume)
         return volume, label
-        
