@@ -12,7 +12,7 @@ def get_densenet():
 def get_vit():
     model = ViT(
         in_channels = 1,                 
-        img_size = (96, 112, 96),       # dim. of input image
+        img_size = (128, 128, 128),     # dim. of input image
         patch_size = (16, 16, 16),      # dim. of patch size
         hidden_size = 768,              # dim. of hidden layer
         mlp_dim = 3072,                 # dim. of feedforward layer
