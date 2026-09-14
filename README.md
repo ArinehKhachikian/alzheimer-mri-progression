@@ -139,6 +139,10 @@ The dual perspective — rigorous statistical analysis and modern deep learning 
 
 ## Citation
 
-If you use this work, please also cite the ADNI dataset:
+If you use this work, please also cite the ADNI dataset and MedicalNet:
 
+**ADNI:**
 > Data used in preparation of this article were obtained from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database (adni.loni.usc.edu). The ADNI was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD.
+
+**MedicalNet:**
+> Chen, S., Ma, K., & Zheng, Y. (2019). Med3D: Transfer Learning for 3D Medical Image Analysis. arXiv:1904.00625.
