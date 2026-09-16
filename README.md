@@ -35,6 +35,12 @@ This project builds a 3D deep learning pipeline that:
 
 ---
 
+## Live Demo
+
+[🧠 Try the classifier](https://huggingface.co/spaces/arinehkhachikian/alzheimer-mri-classification) — Upload a T1-weighted NIfTI brain MRI and get real-time classification probabilities.
+
+---
+
 ## Dataset
 
 **Source:** ADNI (Alzheimer's Disease Neuroimaging Initiative) — accessed via approved researcher credentials through UC Santa Barbara
