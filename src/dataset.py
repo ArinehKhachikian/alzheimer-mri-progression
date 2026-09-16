@@ -39,3 +39,33 @@ class ADNIDataset(Dataset):
         else:
             volume = torch.FloatTensor(volume)
         return volume, label
+
+class MultimodalDataset(Dataset):
+    def __init__(self, dataframe, tensors_dir, transform=None):
+        self.data = dataframe.reset_index(drop=True)
+        self.tensors_dir = tensors_dir
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        row = self.data.iloc[idx]
+        ptid = row['PTID']
+        label = int(row['label'])
+
+        # Load preprocessed tensor
+        tensor_path = os.path.join(self.tensors_dir, f'{ptid}.pt')
+        sample = torch.load(tensor_path, weights_only=False)
+        volume = sample['volume']
+
+        # Clinical features: MMSE, CDRSB, age, sex, education
+        mmse = float(row['MMSCORE']) if pd.notna(row['MMSCORE']) else 0.0
+        cdr = float(row['CDRSB']) if pd.notna(row['CDRSB']) else 0.0
+        age = float(row['AGE']) if 'AGE' in row and pd.notna(row['AGE']) else 0.0
+        sex = 1.0 if row['PTGENDER'] == 'Male' else 0.0
+        edu = float(row['PTEDUCAT']) if pd.notna(row['PTEDUCAT']) else 0.0
+
+        clinical = torch.tensor([mmse, cdr, age, sex, edu], dtype=torch.float32)
+
+        return volume, clinical, label
