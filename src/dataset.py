@@ -59,13 +59,11 @@ class MultimodalDataset(Dataset):
         sample = torch.load(tensor_path, weights_only=False)
         volume = sample['volume']
 
-        # Clinical features: MMSE, CDRSB, age, sex, education
-        mmse = float(row['MMSCORE']) if pd.notna(row['MMSCORE']) else 0.0
-        cdr = float(row['CDRSB']) if pd.notna(row['CDRSB']) else 0.0
+        # Clinical features: age, sex, education
         age = float(row['AGE']) if 'AGE' in row and pd.notna(row['AGE']) else 0.0
         sex = 1.0 if row['PTGENDER'] == 'Male' else 0.0
         edu = float(row['PTEDUCAT']) if pd.notna(row['PTEDUCAT']) else 0.0
 
-        clinical = torch.tensor([mmse, cdr, age, sex, edu], dtype=torch.float32)
+        clinical = torch.tensor([age, sex, edu], dtype=torch.float32)
 
         return volume, clinical, label
