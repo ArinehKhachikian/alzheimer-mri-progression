@@ -9,7 +9,7 @@ An end-to-end 3D deep learning pipeline for classifying Alzheimer's disease from
 
 ## Demo
 
-![App Demo](outputs/figures/demo_screenshot.png)
+![App Demo](outputs/figures/demo_ss_clear.png)
 
 Upload a T1-weighted NIfTI brain MRI alongside clinical measurements (MMSE, CDR, age, sex, education) and get real-time CN vs Dementia classification probabilities.
 
